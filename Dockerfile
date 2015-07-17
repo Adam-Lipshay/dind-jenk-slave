@@ -20,8 +20,6 @@ RUN apt-get update -qq && apt-get install -qqy \
     iptables && \
     rm -rf /var/lib/apt/lists/*
 
-RUN apt-get install -y git-core
-
 RUN echo deb https://get.docker.com/ubuntu docker main > /etc/apt/sources.list.d/docker.list && \
     apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 36A1D7869245C8950F966E92D8576A8BA88D21E9
 
@@ -34,6 +32,7 @@ ADD wrapdocker /usr/local/bin/wrapdocker
 RUN chmod +x /usr/local/bin/wrapdocker
 VOLUME /var/lib/docker
 
+RUN apt-get install -y git-core
 
 # Make sure that the "jenkins" user from evarga's image is part of the "docker"
 # group. Needed to access the docker daemon's unix socket.
