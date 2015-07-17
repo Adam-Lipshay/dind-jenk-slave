@@ -10,4 +10,4 @@ set -ex
 /usr/sbin/sshd -D
 
 # test io
-hostname
+apt-get install -y maven
