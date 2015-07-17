@@ -41,3 +41,7 @@ RUN usermod -a -G docker jenkins
 # place the jenkins slave startup script into the container
 ADD jenkins-slave-startup.sh /
 CMD ["/jenkins-slave-startup.sh"]
+
+#Run the build container
+RUN docker pull amlipshay/jenkins-slave
+RUN docker run amlipshay/jenkins-slave

@@ -8,6 +8,3 @@ set -ex
 
 # start the ssh daemon
 /usr/sbin/sshd -D
-
-# test io
-echo "test" >> test.txt
