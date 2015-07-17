@@ -20,6 +20,8 @@ RUN apt-get update -qq && apt-get install -qqy \
     iptables && \
     rm -rf /var/lib/apt/lists/*
 
+RUN apt-get install -y git-core
+
 RUN echo deb https://get.docker.com/ubuntu docker main > /etc/apt/sources.list.d/docker.list && \
     apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 36A1D7869245C8950F966E92D8576A8BA88D21E9
 
@@ -41,7 +43,3 @@ RUN usermod -a -G docker jenkins
 # place the jenkins slave startup script into the container
 ADD jenkins-slave-startup.sh /
 CMD ["/jenkins-slave-startup.sh"]
-
-#Run the build container
-RUN docker pull amlipshay/jenkins-slave
-RUN docker run amlipshay/jenkins-slave
